@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- CoffeeScript is supported but will be optional. -->
+        <script type="text/javascript" src="coffee-script.js"></script>
+        <script type="text/javascript" src="require.js"></script>
+        <script type="text/javascript">
+            var test_module_js = require('examples/test_module.js');
+            test_module_js.test();        
+            var test_module_coffee = require('examples/test_module.coffee');
+            test_module_coffee.test();        
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
