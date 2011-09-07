@@ -8,11 +8,20 @@ var pro = require("uglify-js").uglify;
 var description = 'require.js - NodeJS-Style require() for the browser - https://github.com/oleics/require.js';
 var url = 'https://github.com/oleics/require.js';
 var licensePath = 'LICENSE';
+var versionPath = 'VERSION';
 var sourcePath = 'require.js';
 var targetPath = 'require-min.js';
 
 /*  */
-var license = '/**\r\n * '+description+'\r\n * \r\n * '+url+'\r\n * \r\n * '+fs.readFileSync(licensePath).toString().split('\r\n').join('\r\n * ')+'\r\n */';
+var license = '/**'
+            +'\r\n * '+description+''
+            +'\r\n * '
+            +'\r\n * @version '+fs.readFileSync(versionPath).toString()+''
+            +'\r\n * '
+            +'\r\n * '+url+''
+            +'\r\n * '
+            +'\r\n * '+fs.readFileSync(licensePath).toString().split('\r\n').join('\r\n * ')+''
+            +'\r\n */';
 
 /*  */
 var orig_code = fs.readFileSync(sourcePath).toString();
