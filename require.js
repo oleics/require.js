@@ -1,40 +1,36 @@
+/**
+ * require.js
+ * NodeJS-Style require() for the browser.
+ * 
+ * @version 0.1.0
+ * @author Oliver Leics <oliver.leics@gmail.com>
+ * @since 2011/09/05
+ * @url https://github.com/oleics/require.js
+ * 
+ * Copyright (c) 2011 by Oliver Leics <oliver.leics@gmail.com>
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
 (function() {
-  /**
-  
-  NodeJS-style require() for the browser.
-  
-  @author Oliver Leics
-  @since 2011/09/05
-  @version 0.1
-  
-  Copyright (c) 2011 Oliver Leics
-  
-  Permission is hereby granted, free of charge, to any person
-  obtaining a copy of this software and associated documentation
-  files (the "Software"), to deal in the Software without
-  restriction, including without limitation the rights to use,
-  copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the
-  Software is furnished to do so, subject to the following
-  conditions:
-  
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
-  
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-  OTHER DEALINGS IN THE SOFTWARE.
-  */
-
-  /*
-  An object is used to cache all exports a module may make.
-  */
-
   var createXHR, cwds, exports, extentions, getCwd, getExtension, getType, grabExports, load, modules, popCwd, pushCwd, require, runCode, runners;
   var __hasProp = Object.prototype.hasOwnProperty;
   exports = {};
@@ -50,11 +46,6 @@
     }
     return modules[module];
   };
-  /*
-  Some functions for the switch of working directory of a script to keep calls
-  to require() inside a script relative to the scripts path.
-  */
-
   cwds = [];
   pushCwd = function(module) {
     var cwd;
@@ -73,9 +64,6 @@
       return '';
     }
   };
-  /*
-  */
-
   extentions = {
     js: 'js',
     coffee: 'cs',
@@ -108,9 +96,6 @@
   runCode = function(type, code) {
     return runners[type](code);
   };
-  /*
-  */
-
   createXHR = function() {
     if (window.XMLHttpRequest != null) {
       return new XMLHttpRequest();
@@ -136,16 +121,10 @@
     }
     return modules[module];
   };
-  /*
-  */
-
   require = function(module) {
     if (module in modules) return modules[module];
     return load(module);
   };
-  /*
-  */
-
   window.exports = exports;
   window.require = require;
 }).call(this);
