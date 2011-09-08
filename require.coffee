@@ -4,7 +4,7 @@
 # 
 # @author Oliver Leics
 # @since 2011/09/05
-# @version 0.1.0
+# @version 0.1.1
 # 
 # Copyright (c) 2011 Oliver Leics
 # 
