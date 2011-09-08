@@ -2,7 +2,7 @@
  * require.js
  * NodeJS-Style require() for the browser.
  * 
- * @version 0.1.0
+ * @version 0.1.1
  * @author Oliver Leics <oliver.leics@gmail.com>
  * @since 2011/09/05
  * @url https://github.com/oleics/require.js
@@ -108,7 +108,7 @@
   load = function(module) {
     var xhr;
     xhr = createXHR();
-    xhr.open('GET', getCwd() + module, false);
+    xhr.open('GET', module, false);
     xhr.send(null);
     pushCwd(module);
     try {
@@ -116,14 +116,16 @@
     } catch (error) {
       console.error(error);
     } finally {
-      grabExports(module);
       popCwd();
+      grabExports(module);
     }
     return modules[module];
   };
   require = function(module) {
-    if (module in modules) return modules[module];
-    return load(module);
+    var _module;
+    _module = getCwd() + module;
+    if (_module in modules) return modules[_module];
+    return load(_module);
   };
   window.exports = exports;
   window.require = require;
