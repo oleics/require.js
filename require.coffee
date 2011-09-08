@@ -105,7 +105,7 @@ createXHR = ->
 
 load = (module) ->
     xhr = createXHR()
-    xhr.open('GET', getCwd()+module, false) # Append the working directory
+    xhr.open('GET', module, false)
     xhr.send(null)
     pushCwd(module) # Switch the working directory
     try
@@ -113,17 +113,18 @@ load = (module) ->
     catch error
         console.error error
     finally
-        grabExports(module) # Switch back to the previous working directory
-        popCwd()
+        popCwd() # Switch back to the previous working directory
+        grabExports(module)
     modules[module]
 
 # 
 # 
 # 
 require = (module) ->
-    if module of modules
-        return modules[module]
-    load(module)
+    _module = getCwd()+module # Prepend the working directory
+    if _module of modules
+        return modules[_module]
+    load(_module)
 
 # 
 # 
